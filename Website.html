@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Batang Kanto</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: monospace;
+      text-align: center;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+    }
+    pre.ascii {
+      margin-top: 30px;
+      font-size: 12px;
+      line-height: 1.2;
+      white-space: pre;
+      color: white;
+      text-shadow:
+        0 0 5px #a020f0,
+        0 0 10px #a020f0,
+        0 0 20px #a020f0,
+        0 0 40px #a020f0;
+    }
+    .discord-link {
+      color: cyan;
+      text-decoration: none;
+      position: relative;
+      z-index: 2;
+      text-shadow: 0 0 5px #a020f0, 0 0 15px #a020f0;
+      display: inline-block;
+      margin-top: 10px;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      margin-top: 50px;
+      gap: 50px;
+      position: relative;
+      z-index: 2;
+      flex-wrap: wrap;
+      padding: 0 10px;
+    }
+    .profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .circle {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background-color: #111;
+      border: 3px solid #a020f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: gray;
+      overflow: hidden;
+      box-shadow:
+        0 0 10px #a020f0,
+        0 0 20px #a020f0,
+        0 0 40px #a020f0,
+        0 0 80px #a020f0;
+      animation: float 3s ease-in-out infinite alternate;
+    }
+    .circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .name {
+      margin-top: 10px;
+      font-size: 16px;
+      color: white;
+      text-shadow: 0 0 5px #a020f0, 0 0 15px #a020f0;
+    }
+
+    @keyframes float {
+      from { transform: translateY(0px); }
+      to { transform: translateY(-15px); }
+    }
+
+    .dots {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .dot {
+      position: absolute;
+      bottom: -10px;
+      width: 4px;
+      height: 4px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.7;
+      animation: rise linear infinite;
+      box-shadow: 0 0 8px #a020f0;
+    }
+    @keyframes rise {
+      from { transform: translateY(0); opacity: 0.7; }
+      to { transform: translateY(-110vh); opacity: 0; }
+    }
+
+    audio {
+      display: none; /* hidden but autoplay */
+    }
+  </style>
+</head>
+<body>
+  <pre class="ascii">
+██████╗  █████╗ ████████╗ █████╗ ███╗   ██╗ ██████╗     ██╗  ██╗ █████╗ ███╗   ██╗████████╗ ██████╗ 
+██╔══██╗██╔══██╗╚══██╔══╝██╔══██╗████╗  ██║██╔════╝     ██║ ██╔╝██╔══██╗████╗  ██║╚══██╔══╝██╔═══██╗
+██████╔╝███████║   ██║   ███████║██╔██╗ ██║██║  ███╗    █████╔╝ ███████║██╔██╗ ██║   ██║   ██║   ██║
+██╔══██╗██╔══██║   ██║   ██╔══██║██║╚██╗██║██║   ██║    ██╔═██╗ ██╔══██║██║╚██╗██║   ██║   ██║   ██║
+██████╔╝██║  ██║   ██║   ██║  ██║██║ ╚████║╚██████╔╝    ██║  ██╗██║  ██║██║ ╚████║   ██║   ╚██████╔╝
+╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝ ╚═════╝     ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝   ╚═╝    ╚═════╝ 
+  </pre>
+
+  <a href="https://discord.gg/v8QfyN9B" class="discord-link">https://discord.gg/v8QfyN9B</a>
+
+  <div class="container">
+    <div class="profile">
+      <div class="circle">
+        <img src="1331313.jpg" alt="Profile 1" />
+      </div>
+      <div class="name">$Ryu</div>
+    </div>
+    <div class="profile">
+      <div class="circle">
+        <img src="download (1).jpg" alt="Profile 2" />
+      </div>
+      <div class="name">$Apollo</div>
+    </div>
+    <div class="profile">
+      <div class="circle">
+        <img src="nigga.png" alt="Profile 3" />
+      </div>
+      <div class="name">$Cyruz</div>
+    </div>
+  </div>
+
+  <audio autoplay loop>
+    <source src="Needya.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <div class="dots"></div>
+
+  <script>
+    const dotsContainer = document.querySelector('.dots');
+    for (let i = 0; i < 50; i++) {
+      let dot = document.createElement('div');
+      dot.classList.add('dot');
+      dot.style.left = Math.random() * 100 + "vw";
+      dot.style.animationDuration = (3 + Math.random() * 5) + "s";
+      dot.style.opacity = Math.random();
+      dotsContainer.appendChild(dot);
+    }
+  </script>
+</body>
+</html>
